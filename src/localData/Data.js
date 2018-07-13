@@ -31,7 +31,7 @@ let contactMethods = {
 }
 
 const API_KEYS = {
-    currencies: "27d3facdb4879e1ecdd78cc0cb0b8ead"
+    currencies: process.env.REACT_APP_CURRENCY_API_KEY
 }
 
 const ENDPOINTS = {

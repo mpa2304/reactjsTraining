@@ -17,7 +17,9 @@ class MoneyCalculator extends Component {
         this.state = {
             amount: '',
             currency: MX_PESO,
-            currenciesValues: currencies
+            currenciesValues: currencies,
+            ready: false, 
+            apiFailed: false
         }
         this.tryConvert = this.tryConvert.bind(this);
         this.convert = this.convert.bind(this);
@@ -63,7 +65,15 @@ class MoneyCalculator extends Component {
                     ready: true
                 });
             })
-            .catch((reason) => console.log(reason));
+            .catch((reason) => {
+                this.setState({
+                    isReady: false,
+                    apiFailed: {
+                        failed: true,
+                        info: reason
+                    }
+                });
+            });
     }
 
     render() {
@@ -75,6 +85,10 @@ class MoneyCalculator extends Component {
             isReady = this.state.ready;
 
         if  (!isReady) {
+            if (this.state.apiFailed.failed) {
+                return this.state.apiFailed.info.toString();
+            }
+
             return <Loading />;
         }
 
