@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Data from '../localData/Data';
 
 const DESCRIPTION_DEFAULT = 'Please write a description';
@@ -101,13 +101,13 @@ class Form extends Component {
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <h2>Controlled components</h2>
                 <form onSubmit={this.handleSubmit}>
                     {/*--- INPUTS ---*/}
                     <label>
                         Name:
-                        <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} />
+                        <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} aria-label={'Write your name'} aria-required="true" />
                     </label>
                     <hr />
                     {/*--- TEXTAREA ---*/}
@@ -161,7 +161,7 @@ class Form extends Component {
                     <hr />
                     <input type="submit" value="Submit" />
                 </form>
-            </div>
+            </Fragment>
         )
     }
 }

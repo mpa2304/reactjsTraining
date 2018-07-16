@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Greeting from './Greeting';
 import Button from './Button';
 
@@ -22,11 +22,11 @@ class LoginControl extends Component {
         button = <Button onClick={this.handleLogClick}>{isLoggedIn ? 'Click me to logout' : 'Click me to login'}</Button>;
 
         return (
-            <div>
+            <Fragment>
                 This is about conditional rendering and Composition vs Inheritance
                 <Greeting isLoggedIn={isLoggedIn} />
                 {button}
-            </div>    
+            </Fragment>    
         );
     }
 }
